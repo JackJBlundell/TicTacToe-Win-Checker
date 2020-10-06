@@ -5,50 +5,38 @@ function game(board)
     var diag_result = check_diag(board)
 
     if(vert_result == 1 || hoz_result == 1 || diag_result == 1){
-      return "X Wins"
+      console.log("X Wins")
     }
     else if(vert_result == -1 || hoz_result == -1 || diag_result == -1){
-      return "O Wins"
+     console.log("O Wins")
     }
     else {
-      return "No Winner"
+      console.log("No Winner")
     }
 }
 
 function check_vert(board)
 {
-
-    for(row in board)
-    {
+  for(var i = 0; i < board.length; i++) {
+      var row = board[i];
       var x_score = 0;
       var o_score = 0;
-        for(col in board)
-        {
-          if(col == "x")
-          {
-           //Add one to X score for row
-            x_score += 1;
+
+      for(var j = 0; j < row.length; j++) {
+          if(row[j]=="x"){
+          	x_score += 1;
+          } else if(row[j]=="o"){
+          	o_score +=1;
           }
-          else if (col == "o")
-          {
-            //Add one to O score for row
-          }
-        }
-        if(x_score==3)
-        {
-          //If X has 3 in the current row
-          return -1;
-        }
-        else if (o_score==3)
-        {
-          //If O has 3 in the current row
-          return 1;
-        }
-        else
-        {
-          return 0;
-        }
-    }
+      }
+
+      if(x_score==3){
+      	return 1
+      } else if(o_score==3){
+      	return -1
+      }
+  }
+  return 0;
 }
 
 function check_hoz(board)
@@ -61,6 +49,8 @@ function check_diag(board)
 
 }
 
-const tictactoe = [ ["x",,], [,"x",], [,,"x"] ]
+const x_win_vert_board = [ ["x","x","x"], [,"x",], [,,"x"] ]
+const o_win_vert_board = [ ["x",,"x"], ["o","o","o"], [,,"x"] ]
 
-game(tictactoe)
+game(x_win_vert_board)
+game(o_win_vert_board)

@@ -14,10 +14,10 @@ function game(board)
     var diag_result = check_diag(board)
 
     if(vert_result == 1 || hoz_result == 1 || diag_result == 1){
-      console.log("X Wins")
+      console.log("x Wins")
     }
     else if(vert_result == -1 || hoz_result == -1 || diag_result == -1){
-     console.log("O Wins")
+     console.log("o Wins")
     }
     else {
       console.log("No Winner")
@@ -72,18 +72,38 @@ function check_hoz(board)
 
 function check_diag(board)
 {
-
+  if(board[0][0] == ('x') && board[1][1] == ('x') && board [2][2] == ('x'))
+  {
+      return 1
+  }
+  if(board[0][0] == ('o') && board[1][1] == ('o') && board [2][2] == ('o'))
+  {
+      return -1
+  }
+  if (board[0][2] == ('x') && board[1][1] == ('x') && board [2][0] == ('x'))
+  {
+      return 1
+  }
+  if(board[0][2] == ('o') && board[1][1] == ('o') && board [2][0] == ('o'))
+  {
+      return -1
+  }
+  return 0;
 }
 
-//DIFFERENT BOARD RESULTS
+//DIFFERENT BoARD RESULTS
 const x_win_vert_board = [ ["x","x","x"], ["o","x","x"], ["x","o","o"] ]
 const o_win_vert_board = [ ["x","","x"], ["o","o","o"], ["","","x"] ]
 const x_win_hoz_board = [ ["x","","x"], ["x","o","o"], ["x","","x"] ]
 const o_win_hoz_board = [ ["x","o","x"], ["o","o","o"], ["","o","x"] ]
+const o_win_diag_board = [ ["o","o","x"], ["x","o","o"], ["","x","o"] ]
+const x_win_diag_board = [ ["x","o","x"], ["o","x","o"], ["","o","x"] ]
 const no_win = [ ["x","o","x"], ["o","x","o"], ["o","x","o"] ]
 
 game(x_win_vert_board)
 game(o_win_vert_board)
 game(x_win_hoz_board)
 game(o_win_hoz_board)
+game(x_win_diag_board)
+game(o_win_diag_board)
 game(no_win)
